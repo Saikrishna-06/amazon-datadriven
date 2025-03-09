@@ -34,7 +34,7 @@ public class BasicValidation extends BaseTest{
 		search.clickSearchButton();
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4) //element click
     public void clickElement() {
 		Search search = new Search(driver);
 		search.elementClick();
