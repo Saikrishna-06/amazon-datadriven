@@ -19,9 +19,9 @@ public class Search {
 	@FindBy(xpath = "//input[@type='submit']")
 	private WebElement searchButton;
 	
-//	@CacheLookup
-//	@FindBy(xpath = "//span[contains(text(), '1-16 of over 60,000 results for')]")
-//	private WebElement products;
+	@CacheLookup
+	@FindBy(xpath = "//span[contains(text(), '1-16 of over 60,000 results for')]")
+	private WebElement products;
 	
 	@CacheLookup
 	@FindBy(xpath = "//span[contains(text(), 'iPhone 16e 128 GB')]")
@@ -44,6 +44,10 @@ public class Search {
 		  searchButton.click();
 	    }
 	  
+		public void productsCount() {
+		  products.getText();
+	    }
+	  
 //	  public void getdata() {
 //		  products.getText();
 //	    }
@@ -55,5 +59,8 @@ public class Search {
 	public void elementClick() {
 		iphone16e.click();
 	}
+
+
+
 
 }

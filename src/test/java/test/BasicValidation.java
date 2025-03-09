@@ -35,6 +35,12 @@ public class BasicValidation extends BaseTest{
 	}
 	
 	@Test(priority = 4) //element click
+    public void getProductsData() {
+		Search search = new Search(driver);
+		search.productsCount();
+	}
+	
+	@Test(priority = 5) //element click
     public void clickElement() {
 		Search search = new Search(driver);
 		search.elementClick();
