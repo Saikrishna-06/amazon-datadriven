@@ -3,11 +3,14 @@ package test;
 
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pom.Search;
@@ -34,32 +37,29 @@ public class BasicValidation extends BaseTest{
 	}
 	
 	
-//	@Test(priority = 3)
-//	public void validateName() {
-//		String expectedResult = "iphone";
-//
-//		Search search = new Search(driver);
-//		String actualResult = search.getProductName();
-//
-//		Reporter.log("Expected Result = " + expectedResult);
-//		Reporter.log("Actual Result = " + actualResult);
-//
-//		assertTrue(actualResult.equals(expectedResult), "Mismatch in the price,");
-//	}
-	
 	@Test(priority = 3)
     public void searchButtonClick() {
 		Search search = new Search(driver);
 		search.clickSearchButton();
 	}
 	
-	@Test(priority = 4) //element click
+	 @Test(priority = 4)
+	    public void appleProductsCount() {
+	        // Create an instance of the class containing listOfElements()
+		 Search search = new Search(driver);
+	        List<WebElement> iphoneList = search.listOfElements();
+	        
+	        Reporter.log("Number of Apple products found: " + iphoneList.size());
+	        Assert.assertTrue(iphoneList.size() > 0, "No product found");
+	    }
+	
+	@Test(priority = 5) //element click
     public void clickIphone16e() {
 		Search search = new Search(driver);
 		search.elementClick();
 	}	
 
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void priceValidation() {
 		String expectedResult = "59,900";
 		
@@ -71,6 +71,7 @@ public class BasicValidation extends BaseTest{
 		
 		assertTrue(actualResult.equals(expectedResult), "Mismatch in the price,");		
 	}
+	
 }
 
 

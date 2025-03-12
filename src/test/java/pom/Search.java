@@ -1,11 +1,15 @@
 package pom;
 
+import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 public class Search {
@@ -20,8 +24,8 @@ public class Search {
 	private WebElement searchButton;
 	
 	@CacheLookup
-	@FindBy(xpath = "//span[contains(text(), '1-16 of over 60,000 results for')]")
-	private WebElement products;
+	@FindBy(xpath = "//span[contains(text() , 'Apple')]")
+	private List<WebElement> productscount;
 	
 	@CacheLookup
 	@FindBy(xpath = "//span[contains(text(), 'iPhone 16e 128 GB')]")
@@ -49,6 +53,11 @@ public class Search {
 	  public void clickSearchButton() {
 		  searchButton.click();
 	    }	  
+	  
+	  
+	    public List<WebElement> listOfElements() {
+	        return productscount;
+	    }
 	
 	public void elementClick() {
 		iphone16e.click();
