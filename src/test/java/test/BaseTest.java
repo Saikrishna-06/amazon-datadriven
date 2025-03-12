@@ -20,9 +20,9 @@ public class BaseTest {
 		driver = common.getBrowser();
 	}
 	
-//	@AfterTest
-//	public void afterTest() {
-//		common.quitBrowser();
-//	}
+	@AfterTest
+	public void afterTest() {
+		common.quitBrowser();
+	}
 
 }

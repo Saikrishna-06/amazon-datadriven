@@ -27,40 +27,41 @@ public class Search {
 	@FindBy(xpath = "//span[contains(text(), 'iPhone 16e 128 GB')]")
 	private WebElement iphone16e;
 	
+	@CacheLookup
+	@FindBy(xpath = "//span[@class = 'a-price-whole']")
+	private WebElement price;
 	
-
 	public Search(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	  public void enterProduct(String productName) {
-	        serchbox.clear();
-	        serchbox.sendKeys(productName);
-	    }
-	  
-	  
+	public void inputName() {
+	    	serchbox.clear();
+	    	serchbox.sendKeys("iphone");
+	     }
+	
+//	  public String getProductName() {
+//			return serchbox.getText();
+//		}
+
+
 	  public void clickSearchButton() {
 		  searchButton.click();
-	    }
-	  
-		public void productsCount() {
-		  products.getText();
-	    }
-	  
-//	  public void getdata() {
-//		  products.getText();
-//	    }
-	  
-//	public String productsCountText() {
-//		return products.getText();
-//	}
-//	
+	    }	  
+	
 	public void elementClick() {
 		iphone16e.click();
 	}
+	      
+	    public String getPriceOfProduct() {
+			return price.getText();
+		}
 
 
-
-
+	
 }
+
+
+
+
