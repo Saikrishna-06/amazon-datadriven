@@ -3,12 +3,14 @@ package test;
 
 import static org.testng.Assert.assertTrue;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-
+import org.yaml.snakeyaml.Yaml;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
@@ -17,6 +19,7 @@ import pom.Search;
 
 
 public class BasicValidation extends BaseTest{
+
 
 	@Test(priority = 1)
 	public void urlValidation() {
@@ -43,7 +46,22 @@ public class BasicValidation extends BaseTest{
 		search.clickSearchButton();
 	}
 	
-	 @Test(priority = 4)
+
+	@Test(priority = 4)
+	public void resultsValidation() {
+		String expectedResult = "1-16 of over 70,000  results for";
+		
+		Search search = new Search(driver);
+		String actualResult = search.searchResults();
+		
+		Reporter.log("Expected Result = " + expectedResult);
+		Reporter.log("Actual Result = " + actualResult);
+		
+		assertTrue(actualResult.equals(expectedResult), "Mismatch in the price,");	
+	}
+	
+	
+	 @Test(priority = 5)
 	    public void appleProductsCount() {
 	        // Create an instance of the class containing listOfElements()
 		 Search search = new Search(driver);
@@ -53,13 +71,13 @@ public class BasicValidation extends BaseTest{
 	        Assert.assertTrue(iphoneList.size() > 0, "No product found");
 	    }
 	
-	@Test(priority = 5) //element click
+	@Test(priority = 6) //element click
     public void clickIphone16e() {
 		Search search = new Search(driver);
 		search.elementClick();
 	}	
 
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void priceValidation() {
 		String expectedResult = "59,900";
 		
@@ -69,9 +87,8 @@ public class BasicValidation extends BaseTest{
 		Reporter.log("Expected Result = " + expectedResult);
 		Reporter.log("Actual Result = " + actualResult);
 		
-		assertTrue(actualResult.equals(expectedResult), "Mismatch in the price,");		
+		assertTrue(actualResult.equals(expectedResult), "Mismatch in the price,");	
 	}
-	
 }
 
 

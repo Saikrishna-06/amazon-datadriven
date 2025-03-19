@@ -23,17 +23,22 @@ public class Search {
 	@FindBy(xpath = "//input[@type='submit']")
 	private WebElement searchButton;
 	
+	
+	@CacheLookup
+	@FindBy(xpath = "//span[starts-with(text(), '1-16 of over')]")
+	private WebElement results;
+	
 	@CacheLookup
 	@FindBy(xpath = "//span[contains(text() , 'Apple')]")
 	private List<WebElement> productscount;
 	
 	@CacheLookup
-	@FindBy(xpath = "//span[contains(text(), 'iPhone 16e 128 GB')]")
+	@FindBy(xpath = "//span[contains(text(),'iPhone 16e 128 GB') and contains(text(),'Super Retina XDR Display; White')]")
 	private WebElement iphone16e;
 	
 	@CacheLookup
 	@FindBy(xpath = "//span[@class = 'a-price-whole']")
-	private WebElement price;
+	private WebElement priceiphone16e;
 	
 	public Search(WebDriver driver) {
 		this.driver = driver;
@@ -54,6 +59,10 @@ public class Search {
 		  searchButton.click();
 	    }	  
 	  
+	  public String searchResults() {
+		  return results.getText();
+	  }
+	  
 	  
 	    public List<WebElement> listOfElements() {
 	        return productscount;
@@ -64,7 +73,7 @@ public class Search {
 	}
 	      
 	    public String getPriceOfProduct() {
-			return price.getText();
+			return priceiphone16e.getText();
 		}
 
 
